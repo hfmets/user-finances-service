@@ -1,12 +1,13 @@
 const { Sequelize, DataTypes } = require("sequelize");
 require("dotenv").config();
 
-const sequelize = new Sequelize({
-  host: process.env.HOST,
-  database: process.env.DB,
-  username: process.env.USER,
-  password: process.env.PASSWORD,
-  dialect: process.env.dialect,
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 sequelize
