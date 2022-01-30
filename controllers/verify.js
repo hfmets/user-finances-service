@@ -4,9 +4,12 @@ const cookieParser = require("cookie-parser");
 module.exports = function (req, res, next) {
   const sessionCookie = req.cookies["connect.sid"];
   axios
-    .post("http://localhost:3333/api/users/verify", {
-      sessionCookie: sessionCookie,
-    })
+    .post(
+      "https://vandelay-finance-user-service.herokuapp.com/api/users/verify",
+      {
+        sessionCookie: sessionCookie,
+      }
+    )
     .then((response) => {
       console.log(response.data);
       req.body.userId = response.data.userId;
