@@ -20,6 +20,10 @@ module.exports = function (req, res, next) {
       //console.log(err);
       return res
         .status(400)
-        .send({ status: "Invalid", message: "Invalid user credentials" });
+        .send({
+          status: "Invalid",
+          message: "Invalid user credentials",
+          cookie: sessionCookie,
+        });
     });
 };
