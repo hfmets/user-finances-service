@@ -3,8 +3,12 @@ const cookieParser = require("cookie-parser");
 
 module.exports = function (req, res, next) {
   const sessionCookie = req.cookies["connect.sid"];
+  let url = "http://localhost:3333/api/users/verify";
+  if (process.env.NODE_ENV === "production") {
+    url = "http://backend.vandelay-user.fun/api/users/verify";
+  }
   axios
-    .post("http://www.vandelay-user.fun/api/users/verify", {
+    .post(url, {
       sessionCookie: sessionCookie,
     })
     .then((response) => {
