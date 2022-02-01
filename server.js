@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "*",
+  origin: "http://frontend.vandelay-user.fun",
   credentials: true,
 };
 app.use(cors(corsOptions));
