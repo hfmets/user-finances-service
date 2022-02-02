@@ -90,7 +90,11 @@ const getUserBalance = async (req, res) => {
   try {
     const user = await Users.findOne({ where: { id: req.body.userId } });
     if (user) {
-      return res.send({ status: "OK", accountBalance: user.accountBalance });
+      return res.send({
+        status: "OK",
+        accountBalance: user.accountBalance,
+        userId: user.id,
+      });
     }
   } catch (err) {
     console.log(`Something went wrong: ${err}`);
